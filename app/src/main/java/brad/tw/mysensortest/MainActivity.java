@@ -8,6 +8,7 @@ import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         sensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+//        sensor = mSensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
         if (sensor == null){
 
         }
@@ -47,7 +49,10 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onSensorChanged(SensorEvent event) {
-
+            float[] vs = event.values;
+            float x = vs[0];
+            float y = vs[1];
+            float z = vs[2];
         }
 
         @Override
