@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private SensorManager mSensorManager;
     private Sensor sensor;
     private MySensorListener listener;
+    private MyView myview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        myview = (MyView)findViewById(R.id.myview);
 
 
     }
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
             float x = vs[0];
             float y = vs[1];
             float z = vs[2];
+            myview.setXY(x,y);
         }
 
         @Override
@@ -66,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         listener = new MySensorListener();
         mSensorManager.registerListener(listener,sensor,
-                SensorManager.SENSOR_DELAY_NORMAL);
+                SensorManager.SENSOR_DELAY_GAME);
     }
 
     @Override

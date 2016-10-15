@@ -12,7 +12,7 @@ import android.view.View;
  */
 
 public class MyView extends View {
-    private float viewW, viewH;
+    private float viewW, viewH, ballX, ballY;
     private boolean isInit;
     private Paint paintV, paintH, paintBall;
 
@@ -28,7 +28,7 @@ public class MyView extends View {
 
     private void init(){
         viewW = getWidth(); viewH = getHeight();
-
+        ballX = viewW / 2; ballY = viewH/2;
         isInit = true;
     }
 
@@ -37,8 +37,16 @@ public class MyView extends View {
         super.onDraw(canvas);
         if (!isInit) init();
 
-        canvas.drawCircle(viewW/2,viewH/2,40,paintBall);
+        canvas.drawCircle(ballX,ballY,40,paintBall);
         canvas.drawLine(viewW/2,0,viewW/2,viewH, paintV);
         canvas.drawLine(0,viewH/2,viewW,viewH/2, paintH);
     }
+
+    void setXY(float newx, float newy){
+        ballX = newx*(viewW/19.8f) + viewW/2;
+        ballY = newy*(viewH/19.8f)*-1 + viewH/2;
+
+        invalidate();
+    }
+
 }
