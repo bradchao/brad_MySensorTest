@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             float x = vs[0];
             float y = vs[1];
             float z = vs[2];
-            myview.setXY(x,y);
+            myview.setXY(x,y,z);
         }
 
         @Override
